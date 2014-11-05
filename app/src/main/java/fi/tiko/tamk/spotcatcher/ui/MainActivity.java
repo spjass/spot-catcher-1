@@ -25,7 +25,7 @@ import fi.tiko.tamk.spotcatcher.db.ExternalDatabaseHandler;
 import fi.tiko.tamk.spotcatcher.services.GPSTracker;
 
 public class MainActivity extends Activity {
-
+    // committi testaus
     ArrayList<GeoPoint> starLocationList = new ArrayList<GeoPoint>();
     MapView mapView;
     MyItemizedOverlay myStarOverlay = null;
