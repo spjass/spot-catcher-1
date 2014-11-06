@@ -12,15 +12,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import fi.tiko.tamk.spotcatcher.services.JSONParser;
 
 /**
  * Fetches stuff from database and sends it to JSONParser?
  */
-public class ExternalDatabaseFetcher extends Service {
+public class ExternalDatabaseService extends Service {
 
     private final String TAG = "ExternalDatabaseHandler";
     private DatabaseConnection dbConn;
@@ -58,7 +56,7 @@ public class ExternalDatabaseFetcher extends Service {
         private BufferedReader reader;
 
         public DatabaseConnection(String table) {
-            address = Address.buildFetchAddress(table);
+            address = URLBuilder.buildFetchAddress(table);
 
             Log.d(TAG, "DatabaseConnection()");
         }

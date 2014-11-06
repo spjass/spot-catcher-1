@@ -3,7 +3,7 @@ package fi.tiko.tamk.spotcatcher.db;
 /**
  * Created by otrdiz on 30.10.2014.
  */
-public class Address {
+public class URLBuilder {
 
     private static final String DATABASE_FETCH = "http://koti.tamk.fi/~c2htoiva/spot-catcher/getdata.php";
 

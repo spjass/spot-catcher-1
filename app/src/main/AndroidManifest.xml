@@ -14,7 +14,7 @@
             </intent-filter>
         </activity>
 
-        <service android:enabled="true" android:name="fi.tiko.tamk.spotcatcher.db.ExternalDatabaseFetcher" />
+        <service android:enabled="true" android:name=".db.ExternalDatabaseService" />
         <service android:enabled="true" android:name="fi.tiko.tamk.spotcatcher.services.GPSTracker" />
 
     </application>

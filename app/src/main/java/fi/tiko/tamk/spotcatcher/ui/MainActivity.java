@@ -17,11 +17,9 @@ import org.osmdroid.api.IMapController;
 import org.osmdroid.util.BoundingBoxE6;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.overlay.OverlayItem;
 
 import fi.tiko.tamk.spotcatcher.R;
-import fi.tiko.tamk.spotcatcher.db.ExternalDatabaseFetcher;
-import fi.tiko.tamk.spotcatcher.db.ExternalDatabaseHandler;
+import fi.tiko.tamk.spotcatcher.db.ExternalDatabaseService;
 import fi.tiko.tamk.spotcatcher.services.GPSTracker;
 
 public class MainActivity extends Activity {
@@ -40,7 +38,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_map);
 
         Log.d(TAG, "Start DB");
-        Intent i = new Intent(this, ExternalDatabaseFetcher.class);
+        Intent i = new Intent(this, ExternalDatabaseService.class);
         i.putExtra("table", "rakennelmat");
         startService(i);
 

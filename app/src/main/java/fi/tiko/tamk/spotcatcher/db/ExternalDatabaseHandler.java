@@ -19,7 +19,7 @@ public class ExternalDatabaseHandler {
 
     public void fetchTable(String table) {
         Log.d(TAG, "Fetching table: " + table);
-        Intent i = new Intent(activity, ExternalDatabaseFetcher.class);
+        Intent i = new Intent(activity, ExternalDatabaseService.class);
         i.putExtra("table", table);
         activity.startService(i);
     }
