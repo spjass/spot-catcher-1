@@ -23,18 +23,20 @@ public class InternalDatabaseHandler {
     // Database fields
     private SQLiteDatabase database;
     private InternalDatabaseHelper dbHelper;
+    private static String TAG = "InternalDatabaseHandler";
 
     private String[] allColumnsRakennelmat = { InternalDatabaseHelper.COLUMN_ID,
             InternalDatabaseHelper.COLUMN_LATITUDE,
             InternalDatabaseHelper.COLUMN_LONGITUDE,
-            InternalDatabaseHelper.COLUMN_NAME
+            InternalDatabaseHelper.COLUMN_NAME,
+            InternalDatabaseHelper.COLUMN_TYPE
+
     };
 
     private String[] allColumnsRakennukset = {InternalDatabaseHelper.COLUMN_ID,
             InternalDatabaseHelper.COLUMN_LATITUDE,
             InternalDatabaseHelper.COLUMN_LONGITUDE,
-            InternalDatabaseHelper.COLUMN_NAME,
-            InternalDatabaseHelper.COLUMN_TYPE
+            InternalDatabaseHelper.COLUMN_NAME
     };
 
     private String[] allColumnsPisteet = { InternalDatabaseHelper.COLUMN_ID,
@@ -86,7 +88,7 @@ public class InternalDatabaseHandler {
         values.put(InternalDatabaseHelper.COLUMN_NAME, name);
         values.put(InternalDatabaseHelper.COLUMN_TYPE, type);
 
-
+        Log.d(TAG, "rakkennelma added");
         database.insert(InternalDatabaseHelper.TABLE_RAKENNELMAT, null,
                 values);
 
@@ -139,19 +141,23 @@ public class InternalDatabaseHandler {
 
 
     public Rakennelma getRakennelma(int id) {
-
+        Log.d(TAG, "starting get");
         Cursor cursor = database.query(InternalDatabaseHelper.TABLE_RAKENNELMAT,
                 allColumnsRakennelmat, InternalDatabaseHelper.COLUMN_ID + " = " + id, null, null, null, null);
 
         Rakennelma rakennelma = new Rakennelma();
 
+
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
+            Log.d(TAG, "moving cursor2");
             rakennelma = cursorToRakennelma(cursor);
             cursor.moveToNext();
         }
         // make sure to close the cursor
         cursor.close();
+        Log.d(TAG, "ending get");
+
         return rakennelma;
     }
 
@@ -162,12 +168,15 @@ public class InternalDatabaseHandler {
      * @return Rakennelma object
      */
     private Rakennelma cursorToRakennelma(Cursor cursor) {
+        Log.d(TAG, "moving cursor");
         Rakennelma rakennelma = new Rakennelma();
         rakennelma.setId(cursor.getInt(0));
         rakennelma.setLat(cursor.getFloat(1));
         rakennelma.setLon(cursor.getFloat(2));
         rakennelma.setName(cursor.getString(3));
         rakennelma.setType(cursor.getInt(4));
+
+        Log.d(TAG, cursor.getInt(0) + " " + cursor.getFloat(1) + " " + cursor.getString(3) + " arvoja");
 
         return rakennelma;
     }

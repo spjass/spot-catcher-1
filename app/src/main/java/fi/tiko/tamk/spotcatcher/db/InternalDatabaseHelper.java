@@ -9,7 +9,7 @@ import android.util.Log;
  */
 public class InternalDatabaseHelper extends SQLiteOpenHelper {
     //  Change to create new tables
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public static final String TABLE_RAKENNELMAT = "Rakennelmat";
     public static final String TABLE_PISTEET = "Pisteet";
@@ -36,7 +36,7 @@ public class InternalDatabaseHelper extends SQLiteOpenHelper {
             + " integer not null primary key autoincrement unique, "
             + COLUMN_LATITUDE + " float(3) not null,"
             + COLUMN_LONGITUDE + " float(3) not null,"
-            + COLUMN_NAME + " text"
+            + COLUMN_NAME + " text,"
             + COLUMN_TYPE + " integer);";
 
     private static final String DATABASE_CREATE_RAKENNUKSET = "create table "
@@ -52,7 +52,7 @@ public class InternalDatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_SCORE + " integer not null,"
             + COLUMN_USER + " text not null,"
             + COLUMN_PLACE + " text not null,"
-            + COLUMN_DATE + " timestamp, not null);";
+            + COLUMN_DATE + " timestamp not null);";
 
     private static final String DATABASE_CREATE_PISTEET = "create table "
             + TABLE_PISTEET + "(" + COLUMN_ID
